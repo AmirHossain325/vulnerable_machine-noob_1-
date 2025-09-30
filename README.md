@@ -20,16 +20,27 @@ It's a vulnerable ubuntu machine.Here our task is to access the machine and some
    - when we saw the ftp service is on and anonymous port is possible we have a flag.
 
 4. **Exploitation**
-   -Step-1:ftp login
-   -Step-2:Than we found some files cred.txt and welcome.
-    Step-3:After download it and we found usename and password from cred.txt
-   -Step-4:Than type vulnerable machine ip and than enter username and pass.
-   -Step-5:we saw an interface and than we have click about Us section it download a .rar file
-   -Step-6:we unrar it and than we found a directory dowloads and than we found some image and sudo
-   -Step-7:In images is not normal than i use steghide and extract some files and found hint.py and user.txt
-   -Step-8:I found ceaser cipher text from user.txt and than i decode it from online
-   -Step-9:Than i decode it and than it will help me to login into **ssh** as a user wtf
-   -Step-10:After i take root login and tha go to root folder and find root.txt and it is in base64 and tha i found the flag which is a Linkedin id
+   **Step-by-step:**
+1. **FTP login**
+   - Connected via anonymous FTP and downloaded `cred.txt` and `welcome` files.
+2. **Review credentials**
+   - Opened `cred.txt` and found a username and password 
+3. **Web access**
+   - Logged into the web interface using the credentials found.
+4. **Download/archive**
+   - Clicked the `About Us` section and downloaded `.rar`.
+5. **Extract**
+   - Unrared the archive and discovered a `downloads/` directory with images and scripts.
+6. **Image forensic**
+   - Used `steghide` on some images and extracted additional files (e.g., `hint.py`, `user.txt`).
+7. **Decode ciphertext**
+   - `user.txt` contained Caesar cipher text — decoded via an online tool (or script) to obtain credentials for SSH.
+8. **SSH login**
+   - Used decoded credentials to login via SSH as a normal user.
+9. **Privilege escalation**
+   - Performed local enumeration, found a misconfigured `sudo`/SUID binary or script, and used it to get root.
+10. **Root proof**
+   - Switched to root and found `root.txt` — it was Base64 encoded; decoded and retrieved the root flag.
                                                         **  Than its finish!!**
 
 
